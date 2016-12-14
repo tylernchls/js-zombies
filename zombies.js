@@ -148,12 +148,25 @@
             this.equipped = itemToEquip; // if no weapon equipped, sets this.equipped to itemToEquip.
             this._pack.splice(indexItem , 1); // removes from pack
           }
+      }
+    }
 
-
+    eat(itemToEat) {
+      var toEat = this._pack.indexOf(itemToEat);
+      if (itemToEat instanceof(Food) && this._pack.indexOf(itemToEat) !== -1) { // checks if is instance of food & food is in pack
+        this._pack.splice(toEat, 1); // removes itemToEat from pack
+        if (this.health + itemToEat.energy < this._maxHealth) {   // makes sure health + energy < maxHealth
+          this.health += itemToEat.energy; // adds itemToEat to health
+        } else {
+          this.health = this._maxHealth; // sets health to maxHealth if exceeded
+          }
 
       }
-
     }
+
+
+
+
   };
 
 /**
