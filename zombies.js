@@ -173,23 +173,34 @@
     }
 
     equippedWith() {
-      if (this.equipped !== false){
+      if (this.equipped !== false){  // equipped = true
         console.log(this.name + this.equipped.name);
-        return this.equipped.name;
+        return this.equipped.name;  // returns weapons name
       } else {
         console.log('nothing is equipped');
-        return false;
+        return false; // returns false if no weapon is equipped
       }
-
     }
-
-
-
-
-
-
-
   };
+
+  class Zombie {
+    constructor(health, strength, speed, isAlive, maxHealth) {
+      this.health = health;
+      this.strength = strength;
+      this.speed = speed;
+      this.isAlive = true;
+      this._maxHealth = health;
+    }
+  };
+
+
+
+
+
+
+
+
+
 
 /**
  * Player Class Method => checkPack()
