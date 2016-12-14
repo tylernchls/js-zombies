@@ -135,11 +135,25 @@
         this.getPack().splice(this.getPack().indexOf(item), 1);
         console.log(item + 'has been discarded');
         return true;
-
-      }
+        }
     }
 
+    equip(itemToEquip) {
+      var indexItem = this._pack.indexOf(itemToEquip); // where item is you want in your pack
+      if (itemToEquip  instanceof(Weapon) && this._pack.indexOf(itemToEquip) !== -1) {
+        if (this.equipped !== false) {  // if player has weapon equipped
+          this._pack.splice(indexItem, 1 , this.equipped); // where item is, removes from pack and puts in current weapon in
+          this.equipped = itemToEquip; // sets equipped to item you want to be equipped
+        } else {
+            this.equipped = itemToEquip; // if no weapon equipped, sets this.equipped to itemToEquip.
+            this._pack.splice(indexItem , 1); // removes from pack
+          }
 
+
+
+      }
+
+    }
   };
 
 /**
@@ -386,18 +400,21 @@
  * Feel free to edit this and check your game logic.
  */
 function runGame() {
-  // var player = new Player("Joan", 500, 30, 70);
+   var player = new Player("Joan", 500, 30, 70);
+
+
   // var zombie = new Zombie(40, 50, 20);
   // var charger = new FastZombie(175, 25, 60);
   // var tank = new StrongZombie(250, 100, 15);
   // var spitter = new RangedZombie(150, 20, 20);
   // var boomer = new ExplodingZombie(50, 15, 10);
 
-  // var shovel = new Weapon("shovel", 15);
+   //var shovel = new Weapon("shovel", 15);
   // var sandwich = new Food("sandwich", 30);
   // var chainsaw = new Weapon("chainsaw", 25);
 
-  // player.takeItem(shovel);
+   //player.takeItem(shovel);
+   //console.log(player.getPack());
   // player.takeItem(sandwich);
   // player.takeItem(chainsaw);
   // player.discardItem(new Weapon("scythe", 21));
@@ -415,8 +432,8 @@ function runGame() {
   // player.equippedWith();
   // player.checkPack();
 
-  // player.health = 487;
-  // console.log("Before health: " + player.health);
+   //player.health = 487;
+   //console.log("Before health: " + player.health);
   // player.useItem(sandwich);
   // console.log("After health: " + player.health);
   // player.checkPack();
