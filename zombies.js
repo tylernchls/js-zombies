@@ -1,12 +1,4 @@
-/**
- * Class => Item(name)
- * -----------------------------
- * Creates an item.
- *
- * @name Item
- * @param {string} name     The item's name.
- * @property {string} name
- */
+
  class Item {
   constructor(name) {
     this.name = name;
@@ -14,50 +6,13 @@
 
  };
 
-/**
- * Class => Weapon(name, damage)
- * -----------------------------
- * Creates a weapon item.
- * Weapon items can be equipped for use in battle.
- *
- * The Weapon class constructor will call
- *   the super class (Item) constructor
- *   while passing in the 1 Item constructor param
- *
- * @name Weapon
- * @param {string} name     The weapon's name.
- * @param {number} damage   The weapon's damage.
- * @property {number} damage
- */
- class Weapon extends Item {
+  class Weapon extends Item {
   constructor(name,damage) {
     super(name);
     this.damage = damage;
   }
  };
 
-/**
- * Weapon Extends Item Class
- * -----------------------------
- */
-
-
-
-/**
- * Class => Food(name, energy)
- * -----------------------------
- * Creates a food item.
- * Food items give energy, restoring health to the player.
- *
- * The Food class constructor will call
- *   the super class (Item) constructor
- *   while passing in the 1 Item constructor param
- *
- * @name Food
- * @param {string} name       The food's name.
- * @param {number} energy     The energy the food provides.
- * @property {number} energy
- */
   class Food extends Item {
     constructor(name, energy) {
       super(name);
@@ -65,36 +20,7 @@
     }
   };
 
-
-/**
- * Food Extends Item Class
- * -----------------------------
- */
-
-
-
-/**
- * Class => Player(name, health, strength, speed)
- * -----------------------------
- * Creates a player in a zombie-infested world.
- *
- * @name Player
- * @param {string} name                    The player's name.
- * @param {number} health                  The player's health.
- * @param {number} strength                The player's strength.
- * @param {number} speed                   The player's speed.
- * @private {array} pack                   Default value should be empty.
- * @private {number} maxHealth             Default value should be set to `health`.
- * @property {string} name
- * @property {number} health
- * @property {number} strength
- * @property {number} speed
- * @property {boolean} isAlive             Default value should be `true`.
- * @property {Weapon/boolean} equipped     Default value should be `false`.
- * @property {method} getPack              Returns private variable `pack`.
- * @property {method} getMaxHealth         Returns private variable `maxHealth`.
- */
-  class Player {
+  class Player {  // creates player class
     constructor(name, health, strength, speed) {
       this.name = name;
       this.health = health;
@@ -120,19 +46,20 @@
     takeItem(item) {
      if (this.getPack().length < 3){
       console.log(this.name + item);
-      this._pack.push(item);
+      this._pack.push(item); // pushes item into pack if have < 3 items
       return true;
      } else {
-      console.log("Pack is full");
+      console.log("Pack is full");  // returns false if pack if full
       return false;
       }
     }
 
     discardItem(item) {
-      if (this.getPack().indexOf(item) === -1) {
+      var throwItem = this._pack.indexOf(item); // save index of item in throwItem to be used
+      if (this._pack.indexOf(item) === -1) { // checks in pack to see if item is there, returns cl
         console.log('item is not there');
       } else {
-        this.getPack().splice(this.getPack().indexOf(item), 1);
+        this._pack.splice(throwItem, 1); // removes item from pack
         console.log(item + 'has been discarded');
         return true;
         }
@@ -193,13 +120,107 @@
     }
   };
 
+  class FastZombie extends Zombie {
+    constructor(health, strength, speed) {
+      super(health, strength, speed);
+    }
+  };
+
+  class StrongZombie extends Zombie {
+    constructor(health, strength, speed) {
+      super(health, strength, speed);
+    }
+  };
+
+  class RangedZombie extends Zombie {
+    constructor(health, strength, speed) {
+      super(health, strength, speed);
+    }
+  };
+
+  class ExplodingZombie extends Zombie {
+    constructor(health, strength, speed) {
+      super(health, strength, speed);
+    }
+  };
 
 
+// specs//
+
+/**
+ * Class => Item(name)
+ * -----------------------------
+ * Creates an item.
+ *
+ * @name Item
+ * @param {string} name     The item's name.
+ * @property {string} name
+ */
+
+/**
+ * Class => Weapon(name, damage)
+ * -----------------------------
+ * Creates a weapon item.
+ * Weapon items can be equipped for use in battle.
+ *
+ * The Weapon class constructor will call
+ *   the super class (Item) constructor
+ *   while passing in the 1 Item constructor param
+ *
+ * @name Weapon
+ * @param {string} name     The weapon's name.
+ * @param {number} damage   The weapon's damage.
+ * @property {number} damage
+ */
+
+/**
+ * Weapon Extends Item Class
+ * -----------------------------
+ */
 
 
+/**
+ * Class => Food(name, energy)
+ * -----------------------------
+ * Creates a food item.
+ * Food items give energy, restoring health to the player.
+ *
+ * The Food class constructor will call
+ *   the super class (Item) constructor
+ *   while passing in the 1 Item constructor param
+ *
+ * @name Food
+ * @param {string} name       The food's name.
+ * @param {number} energy     The energy the food provides.
+ * @property {number} energy
+ */
 
+  /**
+ * Food Extends Item Class
+ * -----------------------------
+ */
 
-
+/**
+ * Class => Player(name, health, strength, speed)
+ * -----------------------------
+ * Creates a player in a zombie-infested world.
+ *
+ * @name Player
+ * @param {string} name                    The player's name.
+ * @param {number} health                  The player's health.
+ * @param {number} strength                The player's strength.
+ * @param {number} speed                   The player's speed.
+ * @private {array} pack                   Default value should be empty.
+ * @private {number} maxHealth             Default value should be set to `health`.
+ * @property {string} name
+ * @property {number} health
+ * @property {number} strength
+ * @property {number} speed
+ * @property {boolean} isAlive             Default value should be `true`.
+ * @property {Weapon/boolean} equipped     Default value should be `false`.
+ * @property {method} getPack              Returns private variable `pack`.
+ * @property {method} getMaxHealth         Returns private variable `maxHealth`.
+ */
 
 
 /**
