@@ -160,9 +160,20 @@
         } else {
           this.health = this._maxHealth; // sets health to maxHealth if exceeded
           }
-
       }
     }
+
+    useItem(item) {
+      if (item instanceof(Weapon)) {
+        this.equip(item);
+      }
+      if (item instanceof(Food)){
+        this.eat(item);
+      }
+    }
+
+
+
 
 
 
