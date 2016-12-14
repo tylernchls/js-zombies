@@ -172,6 +172,17 @@
       }
     }
 
+    equippedWith() {
+      if (this.equipped !== false){
+        console.log(this.name + this.equipped.name);
+        return this.equipped.name;
+      } else {
+        console.log('nothing is equipped');
+        return false;
+      }
+
+    }
+
 
 
 
