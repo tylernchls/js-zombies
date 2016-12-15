@@ -1,17 +1,16 @@
 
- class Item {
-  constructor(name) {
-    this.name = name;
-  }
+ function Item(name) {
+  this.name = name;
+ }
 
- };
 
-  class Weapon extends Item {
-  constructor(name,damage) {
-    super(name);
+  function Weapon(name,damage) {
+    Item.call(this, name)
     this.damage = damage;
-  }
- };
+ }
+  Weapon.prototype = Object.create(Item.prototype, {
+    constructor : Weapon
+  });
 
   class Food extends Item {
     constructor(name, energy) {
